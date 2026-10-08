@@ -1,9 +1,10 @@
-import unittest 
+import unittest
 from unittest.mock import patch
 from io import StringIO
 
 from src.task import Task
 from src.task_manager import list_tasks
+
 
 class TestRichDisplay(unittest.TestCase):
 
@@ -60,8 +61,6 @@ class TestRichDisplay(unittest.TestCase):
         self.assertIn("Shopping", result)
         self.assertNotIn("Homework", result)
 
+
 if __name__ == '__main__':
     unittest.main()
-
-
-

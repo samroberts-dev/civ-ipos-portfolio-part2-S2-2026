@@ -2,6 +2,10 @@ from src.task import Task
 from src.file_handler import save_tasks
 from datetime import datetime
 
+from rich.console import Console
+from rich.table import Table
+from rich import box
+
 
 def add_task(tasks, title, description, due_date):
     """
@@ -63,24 +67,15 @@ def delete_task(tasks, title):
 
 def list_tasks(tasks, status=None):
     """
-    Display tasks in the task list, optionally filtered by status.
+    Display tasks in a formatted Rich table.
 
     Args:
-        tasks (list): The list of existing Task objects.
-        status (str, optional): The status to filter tasks
-        by (e.g., "pending" or "completed").
-
-    Returns:
-        None
-
-    Side Effects:
-        - Prints the list of tasks to the console.
+        tasks (list): List of Task objects.
+        status (str, optional): Filter tasks by status.
     """
     if not status:
-        # If status is not set
         filtered = tasks
     else:
-        # Filter tasks based on their status
         filtered = []
         for task in tasks:
             if task.status == status:
@@ -89,11 +84,34 @@ def list_tasks(tasks, status=None):
     if not filtered:
         print("No tasks found.")
         return
+
+    table = Table(
+        title="Task List",
+        show_header=True,
+        show_lines=True,
+        box=box.HEAVY_HEAD
+    )
+
+    table.add_column("Title")
+    table.add_column("Description")
+    table.add_column("Due Date")
+    table.add_column("Status")
+
     for task in filtered:
-        print(
-            f"{task.title} | {task.description} | "
-            f"Due: {task.due_date} | Status: {task.status}"
+        status_colour = (
+            "green" if task.status == "completed"
+            else "yellow"
         )
+
+        table.add_row(
+            task.title,
+            task.description,
+            task.due_date,
+            f"[{status_colour}]{task.status}[/{status_colour}]"
+        )
+
+    console = Console()
+    console.print(table)
 
 
 def filter_tasks_by_status(tasks, status):
