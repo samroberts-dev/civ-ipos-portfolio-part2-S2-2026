@@ -6,6 +6,19 @@ from rich.console import Console
 from rich.table import Table
 from rich import box
 
+from loguru import logger
+from pathlib import Path
+
+Path("logs").mkdir(exist_ok=True)
+
+logger.add(
+    "logs/task_manager.log",
+    rotation="1 MB",
+    retention="7 days",
+    level="INFO",
+    encoding="utf-8"
+)
+
 
 def add_task(tasks, title, description, due_date):
     """
@@ -28,18 +41,19 @@ def add_task(tasks, title, description, due_date):
     """
     # Prevent duplicate tasks
     if any(task.title == title for task in tasks):
-        print("Error: A task with this title already exists.")
+        logger.warning(f"Duplicate task: {title}")
         return False
 
     # Validate due date format
     try:
         datetime.strptime(due_date, "%d-%m-%Y")
     except ValueError:
-        print("Error: Invalid date format. Use DD-MM-YYYY.")
+        logger.warning(f"Invalid due date for the task: {title}")
         return False
 
     tasks.append(Task(title, description, due_date))
     save_tasks(tasks)
+    logger.info(f"Task added: {title}")
     return True
 
 
@@ -61,7 +75,10 @@ def delete_task(tasks, title):
         if task.title == title:
             tasks.remove(task)
             save_tasks(tasks)
+            logger.info(f"Task deleted: {title}")
             return True
+
+    logger.warning(f"Task not found: {title}")
     return False
 
 
