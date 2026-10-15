@@ -2,7 +2,7 @@
 
 ---
 
-## **Overview**
+## Overview
 
 This activity requires you to:
 
@@ -16,139 +16,126 @@ This activity requires you to:
 
 ---
 
-## **Workflow**
-
----
+## Workflow
 
 ### 1. Familiarise Yourself with the Project
 
 1. **Clone the repository**:
 
-```bash
-git clone <repository-url>
-cd pin_civ_assessment_ipos_portfolio_2
-```
+   ```bash
+   git clone <repository-url>
+   cd pin_civ_assessment_ipos_portfolio_2
+   ```
 
-2. Use the Virtual Environment
+2. **Use a Virtual Environment**
 
-NOTE: **activate a virtual environment** in Python, the command varies depending on your **operating system** and the **shell/terminal** you are using. Here's a clear step-by-step guide:
-
----
+   Activate a virtual environment in Python. The command varies depending on your operating system and terminal.
 
 ### 2. Create a Virtual Environment
 
-Before activating, you must create the virtual environment in your project folder:
+Create the virtual environment:
 
 ```bash
 python -m venv .venv
 ```
 
-`.venv` is the directory name for the virtual environment (you can name it whatever you want).
+Activate the environment:
 
----
-
-1. **Activate the environment**
-
-**For Windows**:
+**Windows (Command Prompt):**
 
 ```cmd
 .venv\Scripts\activate
 ```
 
+**Windows (PowerShell):**
+
 ```powershell
-.\.venv\Scripts\Activate
+.\.venv\Scripts\Activate.ps1
 ```
 
-**For Mac/Linux & Gitbash**
-
-In a **Bash** or **Zsh** terminal, run:
+**Mac/Linux:**
 
 ```bash
-source .venv/bin/activate  #Mac/Linux
-source .venv/Scripts/activate #Windows Gitbash
+source .venv/bin/activate
 ```
 
-**Use the pyproject.toml files to manager the environment & add the scripts to run the app**
+**Windows (Git Bash):**
+
+```bash
+source .venv/Scripts/activate
+```
+
+Install the project:
 
 ```bash
 python -m pip install -e .
 ```
 
----
-
-2. **To update project dependences dependencies**:
+Install development dependencies:
 
 ```bash
-pip install -r requirements-dev.txt #(may require python -m)
+python -m pip install -r requirements-dev.txt
 ```
 
-3. **Run the application**:
+Run the application:
 
 ```bash
-python main.py #(may require python -m)
+python main.py
 ```
 
-Explore the current functionality. Try adding, deleting, and listing tasks.
+Explore the current functionality by adding, deleting, and listing tasks.
 
-4. **Read the Documentation**:
-   - Review the `onboarding.md` file for project setup and guidelines.
-   - Examine the current `README.md` and inline comments for existing functionality.
+Review the `onboarding.md`, `README.md`, and inline comments.
 
 ---
 
-### 2. Debugging and Identifying Enhancement Issues
+### 3. Debugging and Identifying Enhancement Issues
 
-Use debugging tools (e.g., breakpoints, print statements, IDE tools) to identify **two issues** or areas where reusable components can improve the app.
+Use debugging tools such as breakpoints, print statements, and IDE tools to identify **two issues** or areas where reusable components can improve the application.
 
-## **Examples of Suggested Components for Application Enhancement**
+#### Suggested Components
 
-1. **`click`** – Improve CLI usability and interactivity.
-2. **`python-dateutil`** – Ensure robust date validation.
-3. **`rich`** – Format task outputs with tables and colors.
-4. **`colorama`** – Add terminal colors for task statuses.
-5. **`tabulate`** – Format task lists as clean tables.
-6. **`SQLAlchemy`** – Use SQLite for structured, scalable storage.
-7. **`loguru`** – Add detailed logging for debugging.
-8. **`mock`** – Mock file handling and inputs for testing.
-9. **`schedule`** – Automate task reminders for due dates.
+1. `click` — Improve CLI usability and interactivity.
+2. `python-dateutil` — Ensure robust date validation.
+3. `rich` — Format task outputs with tables and colours.
+4. `colorama` — Add terminal colours for task statuses.
+5. `tabulate` — Format task lists as clean tables.
+6. `SQLAlchemy` — Use SQLite for structured storage.
+7. `loguru` — Add detailed logging for debugging.
+8. `mock` — Mock file handling and inputs for testing.
+9. `schedule` — Automate task reminders.
 
----
+#### Example Component Uses
 
-## **Example of Component Use**
+- **User-Friendly CLI:** Combine `click` and `rich` for improved commands and task displays.
+- **Database-Driven Storage:** Use `SQLAlchemy` for structured task management.
+- **Robust Testing:** Use `mock` to test operations without modifying real data.
+- **Automated Reminders:** Use `schedule` to remind users about upcoming tasks.
 
-1. **User-Friendly CLI**:  
-   Combine `click` for CLI commands and `rich` to display tasks as tables with colorful statuses.
-2. **Database-Driven Storage**:  
-   Replace file-based storage with `SQLAlchemy` to allow structured task management and easy queries.
-3. **Robust Testing**:  
-   Use `mock` to test task operations without affecting actual data files.
-4. **Automated Reminders**:  
-   Integrate `schedule` to periodically remind users of due tasks.
+Record your findings and raise two GitHub Issues.
 
 ---
 
-## **Record your findings** and raise **two GitHub Issues**.
+### 4. Raise Two GitHub Issues
 
-### 3. Raise 2 Issues in GitHub Issues
-
-1. Go to the GitHub repository for this project.
-2. Navigate to the **"Issues"** tab.
-3. Document each bug/feature as a separate Issue with the repo template, including:
+1. Open the repository's **Issues** tab.
+2. Create a separate Issue for each improvement using the provided template.
+3. Include:
    - A clear title.
    - A description of the problem.
-   - Reasoning for enhancement & component selection
+   - Reasoning for the enhancement and selected component.
 
 ---
 
-### 4. Create Local and Remote Branches
+### 5. Create Local and Remote Branches
 
-1. **Locally**: Create a new branch for each Issue.
+Create a branch for each Issue:
 
 ```bash
 git checkout -b issue-<issue_number>
 ```
 
-2. **Remotely**: Push the branch to GitHub.
+Push the branch:
 
 ```bash
 git push -u origin issue-<issue_number>
@@ -156,140 +143,273 @@ git push -u origin issue-<issue_number>
 
 ---
 
-### 5. Add and Test Reusable Components
+### 6. Add and Test Reusable Components
 
-1. **Select Components**: Research and integrate suitable Python libraries:
-2. **Write Test Cases**:  
-   Using mock & patch objects write unit tests for the issues you raised using the **`unittest` framework**.
-   - Test invalid dates.
-   - Test duplicate task prevention.
-   - Test new CLI behavior (if applicable).
+Select appropriate Python libraries and write unit tests using `unittest`, `mock`, and `patch`.
 
-3. Run tests to confirm that your new test cases fail:
+Tests should cover relevant scenarios such as:
+
+- Invalid dates.
+- Duplicate task prevention.
+- New CLI behaviour.
+
+Run the tests before implementing the fix to confirm that the new tests fail:
 
 ```bash
-python -m unittest discover test
+python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
 ---
 
-### 6. Fix the Code
+### 7. Fix the Code
 
-1. Incrementally integrate the selected reusable components into the project.
-2. Address the bugs/issues raised in your branch.
-3. Rerun the tests to ensure they pass:
+1. Integrate the selected reusable components.
+2. Address the issues on their respective branches.
+3. Rerun the unit tests:
 
 ```bash
-python -m unittest discover test
+python -m unittest discover -s tests -p "test_*.py" -v
 ```
+
+Confirm the tests pass.
 
 ---
 
-### 7. Update the Documentation
+### 8. Update the Documentation
 
 1. Add or update inline comments explaining changes.
-2. Update the **README.md** to include:
+2. Update the `README.md` with:
    - New dependencies.
-   - Instructions for running and testing the updated app.
-3. Update the **`requirements-dev.txt`** file with any new libraries:
+   - Instructions for running and testing the application.
+3. Update `requirements-dev.txt` with any new libraries.
+
+To export installed dependencies when required:
 
 ```bash
-pip freeze > requirements.txt
+python -m pip freeze > requirements.txt
 ```
 
 ---
 
-### 8. Run your workflows locally
+### 9. Run Workflows Locally
 
-**Before pushing your code to GitHub, you should run flake8 locally to check for code quality issues.**
-
-- If flake8 fails locally, your GitHub Actions workflow will also fail.
-- You cannot merge without these passing.
-
-1. Run flake8 - from the root of the project (where .flake8 is located):
+Before pushing changes, run Flake8 to check code quality.
 
 ```bash
-python -m flake8 /src
+python -m flake8 src tests
+```
 
-# Optional detailed report
+Optional detailed report:
+
+```bash
 python -m flake8 . --statistics --show-source
 ```
 
-2. What to do
-   - Fix any errors shown in the output
-   - Re-run flake8 until no errors remain
+Fix all reported errors before submitting a Pull Request.
 
-3. Thess come from the workflow some common issues you may see
-   - Unused imports or variables
-   - Line length too long
-   - Functions too complex
-   - Debug print() statements (not allowed)
+Common errors include:
+
+- Unused imports or variables.
+- Lines exceeding the configured length.
+- Functions that are too complex.
+- Debugging print statements.
 
 ---
 
-### 9. Submit a Pull Request (PR)
+### 10. Submit a Pull Request
 
-**Note you must use the PULL and ISSUE templates provided**
+Use the provided Pull Request template.
 
-1. Open a Pull Request (PR) for each Issue against the `main` branch.
-2. Ensure your PR description includes:
-   - A clear summary of changes.
-   - The Issue number it addresses (`fixes #<issue_number>`).
-   - Evidence that the new test cases pass.
+1. Open a Pull Request for each Issue against `main`.
+2. Include:
+   - A summary of changes.
+   - The related Issue number using `Fixes #<issue_number>`.
+   - Evidence of passing tests.
 
-3. Push any updates to the branch:
+Push any updates:
 
 ```bash
-   git add .
-   git commit -m "Fixed <issue_number>: Added date validation"
-   git push
+git add .
+git commit -m "feat: implement issue enhancement"
+git push
 ```
 
 ---
 
-### 10. Seek PR Approval
+### 11. Seek Pull Request Approval
 
-#### DONT MISS THIS STEP AS YOU WILL HAVE TO REVERT IT BACK
+**Do not merge the Pull Request before receiving lecturer approval.**
 
-- Request your lecturer as a reviewer on your PR.
-- Address any feedback provided.
-
----
-
-### 11. Close the Issue
-
-When the PR is merged, the Issue will be automatically closed if you included "fixes #\<issue_number\>" in the PR description.
+1. Request your lecturer as a reviewer.
+2. Address any feedback provided.
+3. Wait for approval before merging.
 
 ---
 
-### 11. Complete Reflection Questions
+### 12. Close the Issue
 
-1. Complete **KBA Testing Documentation & Reusability**
-2. Reflect on the following:
-   - What reusable components did you select and why?
-   - How did the components improve the project?
-   - What challenges did you face when debugging or integrating the components?
+When the Pull Request is merged, GitHub automatically closes the linked Issue if the PR description includes `Fixes #<issue_number>`.
 
 ---
 
-## **Assessment Criteria**
+### 13. Complete Reflection Questions
 
-1. **Identification** of bugs/issues and selection of appropriate reusable components.
-2. **Effective use of GitHub**:
-   - Properly raised Issues and branches.
-   - Clean, descriptive Pull Requests.
-3. **Code Quality**:
-   - Fixes implemented correctly.
-   - Integration of reusable components.
-4. **Testing**:
-   - Unit tests that expose and confirm fixes.
-5. **Documentation**:
-   - Updated inline comments and README.md.
-   - Updated `requirements-dev.txt`.
-6. **PR Workflow**:
-   - Demonstrated initial test failures and successful fixes.
-   - Approval workflow completed.
-7. **Reflection**:
-   - Answered knowledge questions with thoughtful insights.
+Complete the **KBA Testing Documentation & Reusability** assessment.
+
+Reflect on:
+
+- Which reusable components were selected and why.
+- How the components improved the project.
+- Challenges faced while debugging and integrating the components.
 
 ---
+
+## Assessment Criteria
+
+1. **Identification:** Appropriate issues and reusable components.
+2. **GitHub Workflow:** Proper Issues, branches, and Pull Requests.
+3. **Code Quality:** Correct fixes and reusable component integration.
+4. **Testing:** Unit tests demonstrating failures and successful fixes.
+5. **Documentation:** Updated comments, README, and dependencies.
+6. **PR Workflow:** Evidence of testing and lecturer approval.
+7. **Reflection:** Thoughtful responses to knowledge questions.
+
+---
+
+# Task Management CLI — Project Documentation
+
+## Project Overview
+
+The Task Management CLI is a Python application that allows users to add, delete, and list tasks.
+
+Each task contains a title, description, due date, and status. Task information is stored locally in a binary file using Python's `pickle` module.
+
+## Features
+
+- Add tasks with a title, description, and due date.
+- Validate due dates using the `DD-MM-YYYY` format.
+- Prevent duplicate task titles.
+- Delete existing tasks.
+- List tasks in a formatted table.
+- Display task statuses using colours.
+- Save and load tasks from a binary file.
+
+## Reusable Components
+
+### Rich — Issue #1
+
+The `rich` Python library was integrated to improve the readability of task information in the command-line interface.
+
+Previously, tasks were displayed as plain text separated by pipe characters (`|`).
+
+The updated `list_tasks()` function in `src/task_manager.py` uses Rich to display a table containing:
+
+- Title
+- Description
+- Due Date
+- Status
+
+Pending tasks are displayed in yellow, while completed tasks are displayed in green.
+
+The function also supports filtering by status and displays a message when no tasks are found.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/samroberts-dev/civ-ipos-portfolio-part2-S2-2026.git
+cd civ-ipos-portfolio-part2-S2-2026
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+Activate the environment.
+
+**Windows (Git Bash):**
+
+```bash
+source .venv/Scripts/activate
+```
+
+**Windows (PowerShell):**
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Install the project and development dependencies:
+
+```bash
+python -m pip install -e .
+python -m pip install -r requirements-dev.txt
+```
+
+## Running the Application
+
+Run the application:
+
+```bash
+python main.py
+```
+
+The application provides a menu for adding, deleting, and listing tasks.
+
+## Unit Testing
+
+Unit tests use Python's built-in `unittest` framework and `unittest.mock`.
+
+Run all tests:
+
+```bash
+python -m unittest discover -s tests -p "test_*.py" -v
+```
+
+The Rich functionality is tested in `tests/test_rich_display.py`.
+
+The tests verify:
+
+- Table headers are displayed correctly.
+- Table borders are present.
+- Task information is displayed accurately.
+- Empty task lists are handled correctly.
+- Status filtering continues to work.
+
+During development, two new tests initially failed because Rich formatting had not been implemented.
+
+After integrating Rich, all 11 unit tests passed.
+
+## Code Quality
+
+Flake8 is used to check Python code quality.
+
+Run:
+
+```bash
+python -m flake8 src tests
+```
+
+Resolve any reported issues before submitting a Pull Request.
+
+## Dependencies
+
+### Runtime
+
+- `rich` — Formats task information into terminal tables and displays coloured statuses.
+
+### Development
+
+- `flake8` — Checks Python code quality.
+- `unittest` — Python's built-in unit testing framework.
+- `unittest.mock` — Python's built-in mocking utilities.
+
+The `unittest` modules are included with Python and do not require separate installation.
+
+## GitHub Issues
+
+- **Issue #1:** Improve Task List Display Using Rich — implemented on `issue-1`.
+- **Issue #2:** Implement Task Operation Logging Using Loguru — planned.
